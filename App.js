@@ -20,7 +20,7 @@ import Main from './src/screens/main';
 const App = () => {
   return (
     <>
-      <StatusBar hidden />
+      <StatusBar />
       <Main />
     </>
   );

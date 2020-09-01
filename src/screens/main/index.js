@@ -14,7 +14,6 @@ const Loading = () => {
 const Main = () => {
   const [timer, setTimer] = useState(true);
   useEffect(() => {
-    // Update the document title using the browser API
     setTimeout(() => {
       setTimer(false);
     }, 4000);
