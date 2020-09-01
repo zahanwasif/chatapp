@@ -19,7 +19,7 @@ const Main = () => {
     }, 4000);
   });
 
-  return <View>{timer ? <Loading /> : <Home Name="Zahan" />}</View>;
+  return <View>{timer ? <Loading /> : <Home Name="Muqadas" />}</View>;
 };
 
 const styles = StyleSheet.create({
