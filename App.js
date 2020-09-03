@@ -16,13 +16,13 @@ import {
   StatusBar,
 } from 'react-native';
 import Main from './src/screens/main';
+import {NavigationContainer} from '@react-navigation/native';
 
 const App = () => {
   return (
-    <>
-      <StatusBar />
+    <NavigationContainer>
       <Main />
-    </>
+    </NavigationContainer>
   );
 };
 

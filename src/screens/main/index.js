@@ -1,25 +1,36 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import {useState, useEffect} from 'react';
-import Home from '../home';
+import Chat from '../chat';
+import Settings from '../settings';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-const Loading = () => {
-  return (
-    <View style={styles.logoContainer}>
-      <Image style={styles.logo} source={require('../../images/logo.png')} />
-    </View>
-  );
-};
+// const Loading = () => {
+//   return (
+//     <View style={styles.logoContainer}>
+//       <Image style={styles.logo} source={require('../../images/logo.png')} />
+//     </View>
+//   );
+// };
+
+const Tab = createBottomTabNavigator();
 
 const Main = () => {
-  const [timer, setTimer] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setTimer(false);
-    }, 4000);
-  });
+  // const [timer, setTimer] = useState(true);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setTimer(false);
+  //   }, 2000);
+  // });
 
-  return <View>{timer ? <Loading /> : <Home Name="Muqadas" />}</View>;
+  // return <View>{timer ? <Loading /> : <Home Name="Muqadas" />}</View>;
+
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Chats" component={Chat} />
+      <Tab.Screen name="Settings" component={Settings} />
+    </Tab.Navigator>
+  );
 };
 
 const styles = StyleSheet.create({
