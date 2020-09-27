@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -17,12 +18,19 @@ import {
 } from 'react-native';
 import Main from './src/screens/main';
 import {NavigationContainer} from '@react-navigation/native';
+import {Provider} from 'react-redux';
+import {store, persistor} from './src/redux/store';
+import {PersistGate} from 'redux-persist/integration/react';
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <Main />
-    </NavigationContainer>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <NavigationContainer>
+          <Main />
+        </NavigationContainer>
+      </PersistGate>
+    </Provider>
   );
 };
 

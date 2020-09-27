@@ -1,46 +1,20 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import {useState, useEffect} from 'react';
-import Chat from '../chat';
-import Settings from '../settings';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-
-// const Loading = () => {
-//   return (
-//     <View style={styles.logoContainer}>
-//       <Image style={styles.logo} source={require('../../images/logo.png')} />
-//     </View>
-//   );
-// };
-
-const Tab = createBottomTabNavigator();
+import {useDispatch, useSelector} from 'react-redux';
+import {login, logout} from '../../redux/actions';
+import SignupStack from '../navigators/signup-stack-navigator';
+import TabNav from '../navigators/tab-navigator';
+import Stack from '../navigators/main-stack-navigator';
 
 const Main = () => {
-  // const [timer, setTimer] = useState(true);
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setTimer(false);
-  //   }, 2000);
-  // });
-
-  // return <View>{timer ? <Loading /> : <Home Name="Muqadas" />}</View>;
+  // const [isLogged, setIsLogged] = useState(true);
+  const isLogged = useSelector((state) => state.isLoggedIn);
+  const dispatch = useDispatch();
 
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Chats" component={Chat} />
-      <Tab.Screen name="Settings" component={Settings} />
-    </Tab.Navigator>
+    <View style={{flex: 1}}>{isLogged ? <SignupStack /> : <Stack />}</View>
   );
 };
-
-const styles = StyleSheet.create({
-  logo: {width: 400, height: 400},
-  logoContainer: {
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    height: '100%',
-    textAlign: 'center',
-  },
-});
 
 export default Main;
